@@ -31,7 +31,6 @@ let init = async (username, token)=>{
             const projectName = process.cwd().split('\\').slice(-1)[0];
 
             await loadCmd(`curl -u ${username}:${token} https://api.github.com/user/repos -d "{\"name\": \"${projectName}\"}"`, 'Github仓库创建');
-            // curl -u qjk-xiaoqi:a97fc56cbefe4bdc092490067bb1a9727615a583 https://api.github.com/user/repos -d "{\"name\": \"auto\"}"
             await loadCmd(`git remote add origin https://github.com/${username}/${projectName}.git`, '关联远端仓库')
             let loading = ora();
             loading.start(`package.json更新repository：命令执行中...`);
