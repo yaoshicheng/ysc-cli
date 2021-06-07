@@ -1,0 +1,242 @@
+@linkHoverColor: #4ee18c;
+@borderColor: #e5e5e5;
+@mainColor: #18a1f9;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 648px;
+  min-width: 1024px;
+  font-family: DINPro;
+}
+
+.ant-btn {
+  height: 40px;
+  //height: 32px;
+  //min-width: 80px;
+  border-radius: 4px;
+
+  &[disabled]:not(.ant-btn-link) {
+    &,
+    &:hover,
+    &:focus {
+      background: rgba(190, 190, 190, 0.05);
+      color: #b3b3b3;
+      border-color: #b2b2b2;
+    }
+  }
+  &:not(.ant-btn-link):hover {
+    background: linear-gradient(
+      270deg,
+      rgba(131, 250, 186, 0.99) 0%,
+      #53e0c8 100%
+    );
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    border: none;
+  }
+}
+.ant-btn-sm{
+  height: 26px;
+}
+
+.ant-btn-primary {
+  &,
+  &:focus {
+    border: none;
+    background: linear-gradient(
+      270deg,
+      rgba(72, 212, 137, 0.99) 0%,
+      #3cbda7 100%
+    );
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    color: #fff;
+  }
+
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus {
+      background: #d7d7d7;
+      color: #fff;
+    }
+  }
+}
+
+.ant-btn-dashed {
+  &,
+  &:focus {
+    border: 1px dashed @mainColor;
+    color: @mainColor;
+  }
+
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus {
+      background: rgba(190, 190, 190, 0.05);
+      color: #b3b3b3;
+      border-color: #b2b2b2;
+    }
+  }
+}
+
+a,
+.ant-btn-link {
+  color: @mainColor;
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: @linkHoverColor;
+  }
+}
+.ant-btn-link:focus {
+  color: @linkHoverColor;
+}
+
+.btn-text-group {
+  .ant-btn-link:not(:first-child) {
+    &,
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      color: red;
+    }
+  }
+}
+
+.btn-group {
+  margin: 4px 0 20px 0;
+  .ant-btn {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.ant-checkbox-checked {
+  .ant-checkbox-inner {
+    background: linear-gradient(
+      270deg,
+      rgba(72, 212, 137, 0.99) 0%,
+      #3cbda7 100%
+    );
+    border-color: @mainColor;
+  }
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: @mainColor;
+}
+
+.ant-input-affix-wrapper-focused,
+.ant-select-focused:not(.ant-select-disabled).ant-select-multiple
+  .ant-select-selector,
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector,
+.ant-select-focused:not(.ant-select-disabled).ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  border-color: @mainColor;
+}
+
+.search-form {
+  text-align: left;
+  .ant-row {
+    margin-bottom: 20px;
+  }
+}
+
+.ant-input-affix-wrapper,
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: @borderColor;
+  border-radius: 4px;
+  //height: 40px;
+  //line-height: 40px;
+
+  &:hover,
+  &:focus {
+    border-color: @mainColor;
+  }
+}
+
+.ant-input-affix-wrapper,
+.ant-select,
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: @borderColor;
+  border-radius: 4px;
+  height: 42px;
+
+  &:hover,
+  &:focus {
+    border-color: @mainColor;
+  }
+}
+
+.ant-input-affix-wrapper,
+.ant-select-selector{
+  min-width: 150px;
+}
+
+.ant-select {
+  min-width: 150px;
+}
+
+.ant-pagination-item {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+
+  font-family: HelveticaNeue;
+  a {
+    color: rgba(0, 0, 0, 0.65);
+  }
+  &:hover {
+    background: linear-gradient(
+      270deg,
+      rgba(131, 250, 186, 0.99) 0%,
+      #53e0c8 100%
+    );
+    border: none;
+    a {
+      color: #fff;
+    }
+  }
+}
+.ant-pagination-item-active {
+  background: linear-gradient(
+    270deg,
+    rgba(72, 212, 137, 0.99) 0%,
+    #3cbda7 100%
+  );
+  border: none;
+  a {
+    color: #fff;
+  }
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: @mainColor;
+}
+
+.ant-layout-sider {
+  text-align: left;
+}
+
+.header {
+  text-align: right;
+}
+
+.ant-table-title {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: bold;
+  font-size: 16px;
+}

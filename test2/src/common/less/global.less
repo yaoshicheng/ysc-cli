@@ -1,0 +1,35 @@
+.subTitle {
+    // border-bottom: 1px solid #666;
+    background: #EAEDF1;
+    padding-left: 15px;
+    margin: 0 0 10px 0;
+    color: #444;
+    line-height: 30px;
+    position: relative;
+    font-size: 14px;
+
+    em {
+        font-style: normal;
+        color: #00C1DE;
+    }
+
+    &::before {
+        width: 3px;
+        height: 18px;
+        content: '';
+        background: #00C1DE;
+        position: absolute;
+        left: 0;
+        top: 6px;
+    }
+
+    .el-button {
+        float: right;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .tip.right {
+        float: right;
+    }
+}

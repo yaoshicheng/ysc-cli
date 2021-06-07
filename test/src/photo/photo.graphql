@@ -1,0 +1,69 @@
+type Photo {
+  # Example field (placeholder)
+  name: String
+  description: String
+  filename: String
+  views: Int
+  isPublished: Boolean
+  user: User
+}
+
+type User {
+  # Example field (placeholder)
+  username: String
+  password: String
+  photos: [Photo]
+}
+
+input CreateUserInput {
+  username: String
+  password: String
+  photos: [CreatePhotoInput]
+}
+
+type PhotoConnection{
+    total: Int
+    edges:[PhotoEdge]
+    pageInfo:PageInfo
+}
+
+type PhotoEdge{
+    cursor:String
+    node:Photo
+}
+
+type PageInfo{
+    hasPreviousPage:Boolean!
+    hasNextPage:Boolean!
+}
+
+input CreatePhotoInput {
+  # Example field (placeholder)
+   name: String
+   description: String
+   filename: String
+   views: Int
+   isPublished: Boolean
+   user: CreateUserInput
+}
+
+input UpdatePhotoInput {
+    name: String
+    description: String
+    filename: String
+    views: Int
+    isPublished: Boolean
+    user: CreateUserInput
+}
+
+type Query {
+  photosEdge(size: Int, number: Int): PhotoConnection
+  photos(first: Int): [Photo]!
+  photo(id: Int!): Photo
+}
+
+type Mutation {
+  createPhoto(createPhotoInput: CreatePhotoInput!): Photo
+  updatePhoto(id: Int!, updatePhotoInput: UpdatePhotoInput!): Photo
+  removePhoto(id: Int!): Photo
+}

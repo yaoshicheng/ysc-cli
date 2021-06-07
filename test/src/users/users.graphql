@@ -1,0 +1,51 @@
+type Photo {
+  name: String
+  description: String
+  filename: String
+  views: Int
+  isPublished: Boolean
+}
+
+input CreatePhotoInput {
+   name: String
+   description: String
+   filename: String
+   views: Int
+   isPublished: Boolean
+}
+
+type User {
+  # Example field (placeholder)
+  username: String
+  password: String
+  photos: [Photo]
+}
+
+input CreateUserInput {
+  username: String
+  password: String
+  photos: [CreatePhotoInput]
+}
+
+input UpdateUserInput {
+  id: Int!
+}
+
+type Query {
+  users: [User]!
+  user(id: Int!): User
+}
+
+type Query {
+  user(id: Int!): User
+}
+
+type Query {
+  users: [User]!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User
+}

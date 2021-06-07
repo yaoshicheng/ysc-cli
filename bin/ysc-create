@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+const program = require('commander')
+const chalk = require('chalk')
+const symbol = require('log-symbols')
+const utils = require('./util.js');
+const { isExist, prompt, downLoadTemplate, updateJsonFile } = utils;
+
+program
+    .usage('<project-name>')
+
+let create = async (ProjectName)=>{
+    await isExist(ProjectName)
+        .then(()=>{
+            prompt().then(answer => {
+                try{
+                    const { frame } = answer;
+                    let url = "";
+                    switch (frame){
+                        case "nestjs":
+                            url = "https://github.com:yaoshicheng/nestjsDemo#main";
+                            break;
+                        case "vue3":
+                            url = "https://github.com:yaoshicheng/vue3_demo#main";
+                            break;
+                        case "react":
+                            url = "https://github.com:yaoshicheng/react-dva-electron#master";
+                            break;
+                        default:
+                            url = "https://github.com:yaoshicheng/nestjsDemo#main";
+                            break;
+                    }
+                    downLoadTemplate(ProjectName, url)
+                        .then(() => {
+                            const file = require(`${__dirname}/../package`)
+                            try{
+                                updateJsonFile(file, {
+                                    ...answer
+                                }.toString())
+                            }catch(err) {
+                                console.log(symbol.error, chalk.red('更新配置文件失败'));
+                                console.log(symbol.error, chalk.red(err));
+                                process.exit(1);
+                            }
+                        })
+                }catch(err) {
+                    console.log(symbol.error, chalk.red('下载模板失败'));
+                    console.log(symbol.error, chalk.red(err));
+                    process.exit(1);
+                }
+            })
+        });
+}
+
+program.parse(process.argv)
+
+let ProjectName = program.args[0];
+create(ProjectName).then(()=>{})
