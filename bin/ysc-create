@@ -4,6 +4,8 @@ const chalk = require('chalk')
 const symbol = require('log-symbols')
 const utils = require('./util.js');
 const { isExist, prompt, downLoadTemplate, updateJsonFile } = utils;
+const path = require('path');
+const {resolve} = require('path')
 
 program
     .usage('<project-name>')
@@ -31,11 +33,11 @@ let create = async (ProjectName)=>{
                     }
                     downLoadTemplate(ProjectName, url)
                         .then(() => {
-                            const file = require(`${__dirname}/../package`)
+                            const filename = path.join(resolve('./'),`${ProjectName}/package.json`);
                             try{
-                                updateJsonFile(file, {
+                                updateJsonFile(filename, {
                                     ...answer
-                                }.toString())
+                                })
                             }catch(err) {
                                 console.log(symbol.error, chalk.red('更新配置文件失败'));
                                 console.log(symbol.error, chalk.red(err));

@@ -71,6 +71,8 @@ let updateJsonFile = (fileName, obj) => {
       // 重写模板下的package.json文件
       fs.writeFileSync(fileName, JSON.stringify(json, null, '\t'), 'utf-8');
       resolve();
+    }else{
+      console.log(symbol.error, chalk.red(`${fileName} 文件不存在！！！`));
     }
   });
 }
