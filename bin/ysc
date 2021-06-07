@@ -9,5 +9,7 @@ program
     .command('list', 'list all the templates')
     .command('dev', 'start project')
     .command('init', 'generate a new project from a template')
+	.command('add', 'add a template')
+	.command('delete', 'delete a template')
 
 program.parse(process.argv)

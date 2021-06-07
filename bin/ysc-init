@@ -22,8 +22,11 @@ let init = async (username, token)=>{
 
     try {
         await loadCmd(`git init`,'git初始化');
-        if(username === '' || token === '') {
+        console.log(symbol.warning, username , token);
+        if(!username || !token) {
             console.log(symbol.warning, chalk.yellow('缺少参数无法创建远程仓库'));
+            console.log(symbol.warning, chalk.yellow('参考 ysc init <template-name> <project-name>'));
+            process.exit(1);
         }else {
             const projectName = process.cwd().split('\\').slice(-1)[0];
 
