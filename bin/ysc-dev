@@ -1,10 +1,18 @@
 #!/usr/bin/env node
 const program = require('commander')
 const net = require('net')
+const path = require('path')
 const webpack = require('webpack')
 const WebpackDevServer = net.Server
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
-const config = require('../webpack.config.js');
+
+
+const configPath = path.join(path.resolve('./'), 'webpack.config.js');
+let config = require(configPath);
+config = config({
+    plugins: []
+});
+console.log(11111, config)
 
 let dev = (port) => {
     // 启动项目后自动打开浏览器
