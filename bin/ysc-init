@@ -29,7 +29,8 @@ let init = async (username, token)=>{
         }else {
             const projectName = process.cwd().split('\\').slice(-1)[0];
             // const projectName = "ysc-cli";
-            await loadCmd(`curl -u ${username}:${token} https://api.github.com/user/repos -d "{\"name\": \"${projectName}\"}"`, 'Github仓库创建');
+            await loadCmd(`curl -u ${username}:${token} https://api.github.com/user/repos -d "{\\"name\\":\\"${projectName}\\"}"`, 'Github仓库创建');
+            console.log(symbol.success, chalk.red(`curl -u '${username}:${token}' https://api.github.com/user/repos -d '{"name":"'${projectName}'"}'`));
             await loadCmd(`git remote add origin https://github.com/${username}/${projectName}.git`, '关联远端仓库')
             let loading = ora();
             loading.start(`package.json更新repository：命令执行中...`);

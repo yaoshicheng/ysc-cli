@@ -21,6 +21,7 @@ let dev = (port) => {
     });
 }
 
-dev(program.port)
-
 program.parse(process.argv)
+
+let port = program.args[0];
+dev(port).then(()=>{})

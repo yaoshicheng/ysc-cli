@@ -5,6 +5,7 @@ const downloadGit = require("download-git-repo");
 const chalk = require("chalk");
 const symbol = require("log-symbols");
 const child_process = require("child_process");
+const tplObj = require(`${__dirname}/../template`);
 
 let isExist = async(name) => {
   return new Promise((resolve) => {
@@ -21,7 +22,7 @@ let promptList = [
     type: 'list',
     name: 'frame',
     message: 'please choose this project template',
-    choices: ['nextjs', 'vue3', 'react']
+    choices: Object.keys(tplObj)
   },
   {
     type: 'input',

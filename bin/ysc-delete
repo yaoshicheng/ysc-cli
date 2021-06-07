@@ -25,14 +25,18 @@ inquirer
   .prompt(question).then(answers => {
     // answers 就是用户输入的内容
     let { name } = answers;
-    delete tplObj[name]
-    // 更新 template.json 文件
-    fs.writeFile(`${__dirname}/../template.json`, JSON.stringify(tplObj), 'utf-8', err => {
-      if (err) console.log(err)
-      console.log('\n')
-      console.log(chalk.green('Deleted successfully!\n'))
-      console.log(chalk.grey('The latest template list is: \n'))
-      console.log(tplObj)
-      console.log('\n')
-    })
+    if (name === "nextjs" || name === "react" || name === "vue3") {
+      console.log(chalk.red('The project is initial project, can not be deleted!\n'))
+    } else {
+      delete tplObj[name]
+      // 更新 template.json 文件
+      fs.writeFile(`${__dirname}/../template.json`, JSON.stringify(tplObj), 'utf-8', err => {
+        if (err) console.log(err)
+        console.log('\n')
+        console.log(chalk.green('Deleted successfully!\n'))
+        console.log(chalk.grey('The latest template list is: \n'))
+        console.log(tplObj)
+        console.log('\n')
+      })
+    }
   })
